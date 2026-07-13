@@ -2,9 +2,7 @@ import customtkinter as ctk
 import random
 import string
 
-from Shifrator import XOR
-from Deshifrator import Decrypt
-
+from func import Encoder, Decrypt
 
 
 ctk.set_appearance_mode("dark")
@@ -184,14 +182,11 @@ class CryptoApp(ctk.CTk):
             font=TEXT_FONT
         )
 
+
         self.text_box.pack(
             pady=10
         )
 
-        self.text_box.bind(
-            "<Control-v>",
-            self.paste_text
-        )
 
         self.key_label = ctk.CTkLabel(
             card,
@@ -485,22 +480,6 @@ class CryptoApp(ctk.CTk):
             text=LANG[self.lang]["strength"] + " " + icon
         )
 
-    def paste_text(self, event=None):
-
-        try:
-            text = self.clipboard_get()
-
-            self.text_box.insert(
-                "insert",
-                text
-            )
-
-        except:
-            pass
-
-        return "break"
-
-
 
     def generate_key(self):
 
@@ -523,7 +502,7 @@ class CryptoApp(ctk.CTk):
 
         text = self.text_box.get(
             "1.0",
-            "end"
+            "end-1c"
         )
 
         key = self.key.get()
@@ -583,8 +562,6 @@ class CryptoApp(ctk.CTk):
         data = self.get_data()
 
         if data == "DEPTH_ERROR":
-            self.last_output = "DEPTH_ERROR"
-
             self.output(
                 LANG[self.lang]["depth_error"]
             )
@@ -599,7 +576,7 @@ class CryptoApp(ctk.CTk):
         text, key, depth = data
 
         self.output(
-            XOR(text, key, depth)
+            Encoder(text, key, depth)
         )
 
     def decrypt(self):

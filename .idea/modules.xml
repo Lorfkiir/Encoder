@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Shifrator.iml" filepath="$PROJECT_DIR$/.idea/Shifrator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Encoder.iml" filepath="$PROJECT_DIR$/.idea/Encoder.iml" />
     </modules>
   </component>
 </project>
